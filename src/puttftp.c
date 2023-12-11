@@ -7,13 +7,10 @@
 
 int main (int argc, char ** argv){
 	if (argc != 3){
-		printf("usage : ./enseatftp <host> <file>\n");
+		printf("usage : ./puttftp <host> <file>\n");
+		return EXIT_FAILURE;
 	}
 		
-	if (!strcmp(argv[1],"hello")){
-		printf("it works\n");
-		return EXIT_SUCCESS;
-	}
 	
-	return EXIT_FAILURE;
+	return EXIT_SUCCESS;
 }
