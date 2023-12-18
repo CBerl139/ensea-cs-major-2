@@ -9,7 +9,7 @@
 
 int displayIPaddress(struct addrinfo * res){
 	char host[NI_MAXHOST];
-	//char service[NI_MAXSERV];
+	char service[NI_MAXSERV];
 	//struct sockaddr_in * ip = (struct sockaddr_in *)res->ai_addr;
 	
 	getnameinfo(res->ai_addr,res->ai_addrlen,host,strlen(host),NULL,0,NI_NUMERICHOST | NI_NUMERICSERV);
@@ -27,18 +27,13 @@ int main (int argc, char ** argv){
 
 	struct addrinfo hints;
 	// asign all values of hints to 0
-	hints.ai_flags = 0;
-	hints.ai_family = 0;
-	hints.ai_socktype = 0;
-	hints.ai_protocol = 0;
-	hints.ai_addrlen = 0;
-	hints.ai_addr = NULL;
-	hints.ai_canonname = NULL;
-	hints.ai_next = NULL;
+	memset(&hints, 0, sizeof(hints));
+	hints.ai_family = AF_INET;
+	hints.ai_socktype = SOCK_DGRAM;
 	
 	struct addrinfo *res;
 	
-	getaddrinfo(argv[1],NULL,&hints,&res);
+	getaddrinfo(argv[1],argv[2],&hints,&res);
 	
 	displayIPaddress(res);
 	
