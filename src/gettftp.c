@@ -12,7 +12,7 @@ int displayIPaddress(struct addrinfo * res){
 	char service[NI_MAXSERV];
 	//struct sockaddr_in * ip = (struct sockaddr_in *)res->ai_addr;
 	
-	getnameinfo(res->ai_addr,res->ai_addrlen,host,strlen(host),NULL,0,NI_NUMERICHOST | NI_NUMERICSERV);
+	getnameinfo(res->ai_addr,res->ai_addrlen,host,strlen(host),service,NI_MAXSERV,NI_NUMERICHOST | NI_NUMERICSERV);
 	printf("ip : %s\n",host);
 	//inet_ntop(res->ai_family,&(ip->sin_addr),ipstr,strlen(ipstr));
 	
