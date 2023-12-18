@@ -12,7 +12,7 @@ int displayIPaddress(struct addrinfo * res){
 	char service[NI_MAXSERV];
 	//struct sockaddr_in * ip = (struct sockaddr_in *)res->ai_addr;
 	
-	getnameinfo(res->ai_addr,res->ai_addrlen,host,strlen(host),service,NI_MAXSERV,NI_NUMERICHOST | NI_NUMERICSERV);
+	getnameinfo(res->ai_addr,res->ai_addrlen,host,NI_MAXHOST,service,NI_MAXSERV,NI_NUMERICHOST | NI_NUMERICSERV);
 	printf("ip : %s\n",host);
 	//inet_ntop(res->ai_family,&(ip->sin_addr),ipstr,strlen(ipstr));
 	
@@ -20,8 +20,8 @@ int displayIPaddress(struct addrinfo * res){
 }
 
 int main (int argc, char ** argv){
-	if (argc != 3){
-		printf("usage : ./gettftp <host> <file>\n");
+	if (argc != 4){
+		printf("usage : ./gettftp <host> <port> <file>\n");
 		return EXIT_FAILURE;
 	}
 
@@ -37,7 +37,8 @@ int main (int argc, char ** argv){
 	
 	displayIPaddress(res);
 	
-	printf("file : %s\n",argv[2]);	
+	printf("port : %s\n",argv[2]);
+	printf("file : %s\n",argv[3]);	
 	
 	int socket_fd;
 	if (socket_fd = socket(res->ai_family, res->ai_socktype, res->ai_protocol)){
