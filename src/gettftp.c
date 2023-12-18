@@ -67,11 +67,9 @@ int main (int argc, char ** argv){
 	}
 
 	printf("socket_fd = %d\n",socket_fd);
-	int sendtoReturn = sendto(socket_fd,RRQ_msg,msg_size,0,res->ai_addr,res->ai_addrlen);
+	sendto(socket_fd,RRQ_msg,msg_size,0,res->ai_addr,res->ai_addrlen);
 	perror("sendto");
-	printf("sendto = %d\n",sendtoReturn);
-	
-	
+
 	return EXIT_SUCCESS;
 }
 
