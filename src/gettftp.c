@@ -9,11 +9,11 @@
 
 int displayIPaddress(struct addrinfo * res){
 	char host[NI_MAXHOST];
-	char service[NI_MAXSERV];
+	//char service[NI_MAXSERV];
 	//struct sockaddr_in * ip = (struct sockaddr_in *)res->ai_addr;
 	
-	getnameinfo(res->ai_addr,res->ai_addrlen,host,strlen(host),service,strlen(service),NI_NUMERICHOST | NI_NUMERICSERV);
-	printf("%s\n",host);
+	getnameinfo(res->ai_addr,res->ai_addrlen,host,strlen(host),NULL,0,NI_NUMERICHOST | NI_NUMERICSERV);
+	printf("ip : %s\n",host);
 	//inet_ntop(res->ai_family,&(ip->sin_addr),ipstr,strlen(ipstr));
 	
 	return EXIT_SUCCESS;	
@@ -42,7 +42,12 @@ int main (int argc, char ** argv){
 	
 	displayIPaddress(res);
 	
-	printf("%s\n",argv[2]);	
+	printf("file : %s\n",argv[2]);	
+	
+	int socket_fd;
+	if (socket_fd = socket(res->ai_family, res->ai_socktype, res->ai_protocol)){
+		printf("socket_fd = %d\n",socket_fd);
+	}
 	
 	return EXIT_SUCCESS;
 }
