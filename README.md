@@ -20,4 +20,4 @@ When in src directory :
 # What this code does
 gettftp sends a TFTP read request (RRQ) to a host of your choice.
 Here is an capture of Wireshark showing the request has been successfully sent :
-![IMAGE](https://github.com/CBerl139/ensea-cs-major-2/blob/img/capture.png?raw=true)
+![IMAGE](https://github.com/CBerl139/ensea-cs-major-2/blob/main/img/capture.png?raw=true)
